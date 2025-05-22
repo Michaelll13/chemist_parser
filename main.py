@@ -109,7 +109,6 @@ def search_products_single(query: str) -> Dict:
         items = parse_search_page(driver, query)
         print("✅ PARSED", len(items), "items")
 
-        # Очистка
         driver.delete_all_cookies()
         driver.execute_script("window.open('about:blank', '_blank');")
         driver.close()
@@ -126,8 +125,6 @@ async def async_search(query: str):
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(executor, search_products_single, query)
 
-
-# API route
 @app.get("/search")
 async def search_api(query: str = Query(..., description="Поисковый запрос")):
     try:
@@ -136,7 +133,5 @@ async def search_api(query: str = Query(..., description="Поисковый з�
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
 
-
-# Запуск вручную
 if __name__ == "__main__":
     uvicorn.run("main5:app", host="0.0.0.0", port=8000, reload=False)

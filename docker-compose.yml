@@ -7,3 +7,9 @@ services:
     ports:
       - "8001:8000"
     restart: always
+    networks:
+      - parser-network
+
+networks:
+  parser-network:
+    external: true
