@@ -134,4 +134,4 @@ async def search_api(query: str = Query(..., description="Поисковый з�
         return JSONResponse(status_code=500, content={"error": str(e)})
 
 if __name__ == "__main__":
-    uvicorn.run("main5:app", host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
