@@ -125,7 +125,7 @@ async def async_search(query: str):
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(executor, search_products_single, query)
 
-@app.get("/search")
+@app.get("/searchgg")
 async def search_api(query: str = Query(..., description="Поисковый запрос")):
     try:
         result = await async_search(query)
